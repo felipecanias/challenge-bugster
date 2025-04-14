@@ -28,6 +28,13 @@ cd backend
 npm install
 ```
 
+### 4. Instalar navegadores de Playwright
+
+```bash
+cd backend
+npx playwright install
+```
+
 ### 3. Instalar dependencias del Frontend
 
 ```bash
@@ -54,6 +61,17 @@ npm run dev
 ```
 
 La aplicación frontend estará disponible en `http://localhost:3000`
+
+Se recomienda verificar que el streaming funcione correctamente accediendo al siguiente enlace desde la aplicación: [https://www.youtube.com/watch?v=GDlkCkcIqTs](https://www.youtube.com/watch?v=GDlkCkcIqTs)
+
+## 📝 Uso de Comandos
+
+Los comandos que se ejecutan en el navegador deben estar escritos en JavaScript Playwright. Por ejemplo:
+
+```javascript
+await page.goto('https://example.com');
+await page.click('text=Login');
+```
 
 ## 🤔 Decisiones Técnicas
 

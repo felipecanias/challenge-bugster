@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 export default function Home() {
@@ -10,6 +10,23 @@ export default function Home() {
   const [streamUrl, setStreamUrl] = useState(null);
   const [commandResult, setCommandResult] = useState(null);
   const [streamKey, setStreamKey] = useState(0);
+
+  useEffect(() => {
+    const handleBeforeUnload = async () => {
+      if (isBrowserOpen) {
+        try {
+          await fetch('http://localhost:3001/close');
+        } catch (error) {
+          console.error('Error closing browser:', error);
+        }
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [isBrowserOpen]);
 
   const handleOpenBrowser = async () => {
     try {

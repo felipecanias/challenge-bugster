@@ -24,7 +24,7 @@ let clients = []; // Store active stream clients
 
 async function launchBrowser(url) {
   try {
-    browser = await chromium.launch({ headless: false });
+    browser = await chromium.launch({ headless: true });
     const context = await browser.newContext();
     page = await context.newPage();
     await page.setViewportSize({ 
